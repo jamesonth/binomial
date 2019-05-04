@@ -1,0 +1,104 @@
+---
+title: "Introduction to Binomial"
+author: "Jameson Hohbein"
+date: "May 3, 2019"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Introduction to Binomial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## Binomial 
+
+The binomial package is a resource that allows users to make binomials calculations along with many other features that allow users to expand their mathmatic knowledge. 
+
+## Choosing a binomial 
+
+This function calculates the number at which k successes can occur in n trials. 
+
+```{r}
+binc = bin_choose(n=5,k=2)
+binc
+```
+
+## Probability of binomials
+
+This function calculates the chances of getting a number of successes out out of a number of trials with a stipulated probability. 
+
+```{r}
+binprob = bin_probability(success=2,n=5,k=0.5)
+binprob
+```
+
+## Binomial Distribution 
+
+This function produces a list of the the chances of several successes up to the stipulated trial number under a stipulated probability. 
+
+```{r}
+bindis = bin_distribution(trials=5,prob=0.5)
+bindis
+```
+
+You can then plot your distribution in a plot 
+
+```{r}
+plot(bindis)
+```
+
+## Cumulative Binomial 
+
+This function produces a series like the distribution of the binomial but it also provides a cumulative count that keeps track of the total aggregated sums of the probabilities. 
+
+
+```{r}
+bincum = bin_cumulative(trials=5,prob=0.5)
+bincum
+```
+
+You can also plot the distribution
+
+```{r}
+plot(bincum)
+```
+
+## Binomial Variable
+
+This function creates a binvar object which will tell users what trials and probability they entered. 
+
+```{r}
+binvar = bin_variable(trials=10,prob=0.3)
+```
+
+You can print the binvar object by calling it. 
+
+```{r}
+binvar
+```
+
+You can summarize and print the binvar object like so
+
+```{r}
+binsum = summary(binvar)
+binsum
+```
+
+## Measurements 
+
+There are also several measurements you can use that provide the user resources. For instance, mean, variance, mode, skewness, and kurtosis of the binomial are all functions to be utilized. 
+```{r}
+bin_mean(10,0.3)
+
+bin_variance(10,0.3)
+
+bin_mode(10,0.3)
+
+bin_skewness(10,0.3)
+
+bin_kurtosis(10,0.3)
+```
